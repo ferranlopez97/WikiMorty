@@ -15,6 +15,12 @@ class QueryPagedCharactersUseCaseImpl @Inject constructor(
     private val dispatcherProvider: DispatcherProvider
 ) : QueryPagedCharactersUseCase {
 
+
+    /**
+     * Carga la siguiente pagina de personajes desde api remota.
+     * @param filter filtro para aplicar a al query remota. No implementado
+     * @return [Result.Success] con el [PageResult] adecuado  o [Result.Error] si se produce una excepction.
+     */
     override suspend fun execute(filter: QueryFilter?): Result<PageResult, MortyException> {
 
         return withContext(dispatcherProvider.IO) {

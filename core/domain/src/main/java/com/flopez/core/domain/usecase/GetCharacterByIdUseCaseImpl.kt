@@ -9,11 +9,19 @@ import com.flopez.core.domain.result.Result
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
+
+
 class GetCharacterByIdUseCaseImpl @Inject constructor(
     private val dispatcherProvider: DispatcherProvider,
     private val charactersRepository: CharactersRepository
 ) : GetCharacterByIdUseCase {
 
+    /**
+     * Busca en cache local un personaje por su id.
+     * @param id el id del personaje a buscar
+     * @return [Result.Success] con el personaje si este existe o  [Result.Error] si no existe
+     * o se produce una excepction.
+     */
     override suspend fun execute(id: Long): Result<Character, MortyException> {
 
         return withContext(dispatcherProvider.IO) {
