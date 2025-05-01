@@ -27,6 +27,10 @@ Aplicación lista-detalle de los personajes de Rick y Morty usando la api de htt
 ## Estructura 
 ![estructura (1)](https://github.com/user-attachments/assets/1ac50b09-3c72-41bc-ae27-689fd5fc897d)
 
+*common/di esta hecho para:
+- Que domain no necesite implementar hilt y así pueda ser un módulo de kotlin puro y no Android
+- Que el módulo app no tenga que importar todos los otros módulos para poder inyectar dependencias
+
 ## Posibles mejoras
 
 ### Módulo buildSrc/build-logic
