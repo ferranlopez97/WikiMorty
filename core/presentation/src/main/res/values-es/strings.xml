@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="status_dead">muerto</string>
+    <string name="status_alive">vivo</string>
+    <string name="status_unknown">desconocido</string>
+    <string name="gender_male">hombre</string>
+    <string name="gender_female">mujer</string>
+    <string name="gender_genderless">sin género</string>
+    <string name="gender_unknown">desconocido</string>
+    <string name="added_to_favs">Añadido a favoritos</string>
+    <string name="no_results">Sin resultados</string>
+    <string name="go_back">atrás</string>
+    <string name="something_went_wrong">¡Algo ha salido mal!</string>
+    <string name="error_while_querying_characters">Error al realizar la busqueda</string>
+    <string name="error_loading_character">Error al cargar personaje</string>
+    <string name="close_search">Cancelar búsqueda</string>
+    <string name="search">Buscar</string>
+    <string name="add_to_favorites">Añadir a favoritos</string>
+    <string name="share">Compartir</string>
+    <string name="status">estado</string>
+    <string name="gender">género</string>
+    <string name="species">especie</string>
+    <string name="type">tipo</string>
+    <string name="origin">origen\t\t\t\t\t</string>
+    <string name="current_location">ubicación actual</string>
+    <string name="first_appearence">primera aparaición</string>
+    <string name="search_placeholder">Buscar...</string>
+    <string name="image_placeholder" >imagen sin cargar</string>
+    <string name="wiki_morty">Wiki Morty</string>
+</resources>

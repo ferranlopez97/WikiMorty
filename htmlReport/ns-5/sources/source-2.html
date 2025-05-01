@@ -1,0 +1,193 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > LocationDAO_Impl</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.flopez.core.database.dao</a>
+</div>
+
+<h1>Coverage Summary for Class: LocationDAO_Impl (com.flopez.core.database.dao)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">LocationDAO_Impl</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/7)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">LocationDAO_Impl$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/4)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">LocationDAO_Impl$Companion</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/12)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.flopez.core.database.dao
+&nbsp;
+&nbsp;import androidx.room.EntityInsertAdapter
+&nbsp;import androidx.room.RoomDatabase
+&nbsp;import androidx.room.util.performBlocking
+&nbsp;import androidx.sqlite.SQLiteStatement
+&nbsp;import com.flopez.core.database.entity.LocationEntity
+&nbsp;import javax.`annotation`.processing.Generated
+&nbsp;import kotlin.String
+&nbsp;import kotlin.Suppress
+&nbsp;import kotlin.Unit
+&nbsp;import kotlin.collections.List
+&nbsp;import kotlin.reflect.KClass
+&nbsp;
+&nbsp;@Generated(value = [&quot;androidx.room.RoomProcessor&quot;])
+&nbsp;@Suppress(names = [&quot;UNCHECKED_CAST&quot;, &quot;DEPRECATION&quot;, &quot;REDUNDANT_PROJECTION&quot;, &quot;REMOVAL&quot;])
+<b class="nc">&nbsp;public class LocationDAO_Impl(</b>
+&nbsp;  __db: RoomDatabase,
+&nbsp;) : LocationDAO {
+&nbsp;  private val __db: RoomDatabase
+&nbsp;
+&nbsp;  private val __insertAdapterOfLocationEntity: EntityInsertAdapter&lt;LocationEntity&gt;
+<b class="nc">&nbsp;  init {</b>
+<b class="nc">&nbsp;    this.__db = __db</b>
+<b class="nc">&nbsp;    this.__insertAdapterOfLocationEntity = object : EntityInsertAdapter&lt;LocationEntity&gt;() {</b>
+&nbsp;      protected override fun createQuery(): String =
+<b class="nc">&nbsp;          &quot;INSERT OR IGNORE INTO `LocationEntity` (`name`,`url`) VALUES (?,?)&quot;</b>
+&nbsp;
+&nbsp;      protected override fun bind(statement: SQLiteStatement, entity: LocationEntity) {
+<b class="nc">&nbsp;        statement.bindText(1, entity.name)</b>
+<b class="nc">&nbsp;        statement.bindText(2, entity.url)</b>
+&nbsp;      }
+&nbsp;    }
+<b class="nc">&nbsp;  }</b>
+&nbsp;
+<b class="nc">&nbsp;  public override fun insert(location: LocationEntity): Unit = performBlocking(__db, false, true) {</b>
+&nbsp;      _connection -&gt;
+<b class="nc">&nbsp;    __insertAdapterOfLocationEntity.insert(_connection, location)</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  public companion object {
+<b class="nc">&nbsp;    public fun getRequiredConverters(): List&lt;KClass&lt;*&gt;&gt; = emptyList()</b>
+&nbsp;  }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-04-30 10:34</div>
+</div>
+</body>
+</html>

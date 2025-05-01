@@ -1,0 +1,318 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > WikiMortyDatabase_Impl</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.flopez.core.database</a>
+</div>
+
+<h1>Coverage Summary for Class: WikiMortyDatabase_Impl (com.flopez.core.database)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">WikiMortyDatabase_Impl</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/11)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/22)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">WikiMortyDatabase_Impl$createOpenDelegate$_openDelegate$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/59)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/19)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/81)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.flopez.core.database
+&nbsp;
+&nbsp;import androidx.room.InvalidationTracker
+&nbsp;import androidx.room.RoomOpenDelegate
+&nbsp;import androidx.room.migration.AutoMigrationSpec
+&nbsp;import androidx.room.migration.Migration
+&nbsp;import androidx.room.util.TableInfo
+&nbsp;import androidx.room.util.TableInfo.Companion.read
+&nbsp;import androidx.room.util.dropFtsSyncTriggers
+&nbsp;import androidx.sqlite.SQLiteConnection
+&nbsp;import androidx.sqlite.execSQL
+&nbsp;import com.flopez.core.database.dao.CharactersDAO
+&nbsp;import com.flopez.core.database.dao.CharactersDAO_Impl
+&nbsp;import com.flopez.core.database.dao.LocationDAO
+&nbsp;import com.flopez.core.database.dao.LocationDAO_Impl
+&nbsp;import javax.`annotation`.processing.Generated
+&nbsp;import kotlin.Lazy
+&nbsp;import kotlin.String
+&nbsp;import kotlin.Suppress
+&nbsp;import kotlin.collections.List
+&nbsp;import kotlin.collections.Map
+&nbsp;import kotlin.collections.MutableList
+&nbsp;import kotlin.collections.MutableMap
+&nbsp;import kotlin.collections.MutableSet
+&nbsp;import kotlin.collections.Set
+&nbsp;import kotlin.collections.mutableListOf
+&nbsp;import kotlin.collections.mutableMapOf
+&nbsp;import kotlin.collections.mutableSetOf
+&nbsp;import kotlin.reflect.KClass
+&nbsp;
+&nbsp;@Generated(value = [&quot;androidx.room.RoomProcessor&quot;])
+&nbsp;@Suppress(names = [&quot;UNCHECKED_CAST&quot;, &quot;DEPRECATION&quot;, &quot;REDUNDANT_PROJECTION&quot;, &quot;REMOVAL&quot;])
+<b class="nc">&nbsp;public class WikiMortyDatabase_Impl : WikiMortyDatabase() {</b>
+<b class="nc">&nbsp;  private val _charactersDAO: Lazy&lt;CharactersDAO&gt; = lazy {</b>
+<b class="nc">&nbsp;    CharactersDAO_Impl(this)</b>
+&nbsp;  }
+&nbsp;
+<b class="nc">&nbsp;  private val _locationDAO: Lazy&lt;LocationDAO&gt; = lazy {</b>
+<b class="nc">&nbsp;    LocationDAO_Impl(this)</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  protected override fun createOpenDelegate(): RoomOpenDelegate {
+<b class="nc">&nbsp;    val _openDelegate: RoomOpenDelegate = object : RoomOpenDelegate(1,</b>
+<b class="nc">&nbsp;        &quot;dc23fae1c977557b1349b8e5624deb73&quot;, &quot;3f3e983be7d85d0a59a2a68e97daef35&quot;) {</b>
+&nbsp;      public override fun createAllTables(connection: SQLiteConnection) {
+<b class="nc">&nbsp;        connection.execSQL(&quot;CREATE TABLE IF NOT EXISTS `LocationEntity` (`name` TEXT NOT NULL, `url` TEXT NOT NULL, PRIMARY KEY(`name`))&quot;)</b>
+<b class="nc">&nbsp;        connection.execSQL(&quot;CREATE TABLE IF NOT EXISTS `CharacterEntity` (`id` INTEGER NOT NULL, `name` TEXT NOT NULL, `state` TEXT NOT NULL, `gender` TEXT NOT NULL, `species` TEXT NOT NULL, `type` TEXT NOT NULL, `image` TEXT NOT NULL, `url` TEXT NOT NULL, `created` TEXT NOT NULL, `originLocationName` TEXT NOT NULL, `currentLocationName` TEXT NOT NULL, PRIMARY KEY(`id`))&quot;)</b>
+<b class="nc">&nbsp;        connection.execSQL(&quot;CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)&quot;)</b>
+<b class="nc">&nbsp;        connection.execSQL(&quot;INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, &#39;dc23fae1c977557b1349b8e5624deb73&#39;)&quot;)</b>
+&nbsp;      }
+&nbsp;
+&nbsp;      public override fun dropAllTables(connection: SQLiteConnection) {
+<b class="nc">&nbsp;        connection.execSQL(&quot;DROP TABLE IF EXISTS `LocationEntity`&quot;)</b>
+<b class="nc">&nbsp;        connection.execSQL(&quot;DROP TABLE IF EXISTS `CharacterEntity`&quot;)</b>
+&nbsp;      }
+&nbsp;
+&nbsp;      public override fun onCreate(connection: SQLiteConnection) {
+<b class="nc">&nbsp;      }</b>
+&nbsp;
+&nbsp;      public override fun onOpen(connection: SQLiteConnection) {
+<b class="nc">&nbsp;        internalInitInvalidationTracker(connection)</b>
+&nbsp;      }
+&nbsp;
+&nbsp;      public override fun onPreMigrate(connection: SQLiteConnection) {
+<b class="nc">&nbsp;        dropFtsSyncTriggers(connection)</b>
+&nbsp;      }
+&nbsp;
+&nbsp;      public override fun onPostMigrate(connection: SQLiteConnection) {
+<b class="nc">&nbsp;      }</b>
+&nbsp;
+&nbsp;      public override fun onValidateSchema(connection: SQLiteConnection):
+&nbsp;          RoomOpenDelegate.ValidationResult {
+<b class="nc">&nbsp;        val _columnsLocationEntity: MutableMap&lt;String, TableInfo.Column&gt; = mutableMapOf()</b>
+<b class="nc">&nbsp;        _columnsLocationEntity.put(&quot;name&quot;, TableInfo.Column(&quot;name&quot;, &quot;TEXT&quot;, true, 1, null,</b>
+<b class="nc">&nbsp;            TableInfo.CREATED_FROM_ENTITY))</b>
+<b class="nc">&nbsp;        _columnsLocationEntity.put(&quot;url&quot;, TableInfo.Column(&quot;url&quot;, &quot;TEXT&quot;, true, 0, null,</b>
+<b class="nc">&nbsp;            TableInfo.CREATED_FROM_ENTITY))</b>
+<b class="nc">&nbsp;        val _foreignKeysLocationEntity: MutableSet&lt;TableInfo.ForeignKey&gt; = mutableSetOf()</b>
+<b class="nc">&nbsp;        val _indicesLocationEntity: MutableSet&lt;TableInfo.Index&gt; = mutableSetOf()</b>
+<b class="nc">&nbsp;        val _infoLocationEntity: TableInfo = TableInfo(&quot;LocationEntity&quot;, _columnsLocationEntity,</b>
+<b class="nc">&nbsp;            _foreignKeysLocationEntity, _indicesLocationEntity)</b>
+<b class="nc">&nbsp;        val _existingLocationEntity: TableInfo = read(connection, &quot;LocationEntity&quot;)</b>
+<b class="nc">&nbsp;        if (!_infoLocationEntity.equals(_existingLocationEntity)) {</b>
+<b class="nc">&nbsp;          return RoomOpenDelegate.ValidationResult(false, &quot;&quot;&quot;</b>
+&nbsp;              |LocationEntity(com.flopez.core.database.entity.LocationEntity).
+&nbsp;              | Expected:
+<b class="nc">&nbsp;              |&quot;&quot;&quot;.trimMargin() + _infoLocationEntity + &quot;&quot;&quot;</b>
+&nbsp;              |
+&nbsp;              | Found:
+<b class="nc">&nbsp;              |&quot;&quot;&quot;.trimMargin() + _existingLocationEntity)</b>
+&nbsp;        }
+<b class="nc">&nbsp;        val _columnsCharacterEntity: MutableMap&lt;String, TableInfo.Column&gt; = mutableMapOf()</b>
+<b class="nc">&nbsp;        _columnsCharacterEntity.put(&quot;id&quot;, TableInfo.Column(&quot;id&quot;, &quot;INTEGER&quot;, true, 1, null,</b>
+<b class="nc">&nbsp;            TableInfo.CREATED_FROM_ENTITY))</b>
+<b class="nc">&nbsp;        _columnsCharacterEntity.put(&quot;name&quot;, TableInfo.Column(&quot;name&quot;, &quot;TEXT&quot;, true, 0, null,</b>
+<b class="nc">&nbsp;            TableInfo.CREATED_FROM_ENTITY))</b>
+<b class="nc">&nbsp;        _columnsCharacterEntity.put(&quot;state&quot;, TableInfo.Column(&quot;state&quot;, &quot;TEXT&quot;, true, 0, null,</b>
+<b class="nc">&nbsp;            TableInfo.CREATED_FROM_ENTITY))</b>
+<b class="nc">&nbsp;        _columnsCharacterEntity.put(&quot;gender&quot;, TableInfo.Column(&quot;gender&quot;, &quot;TEXT&quot;, true, 0, null,</b>
+<b class="nc">&nbsp;            TableInfo.CREATED_FROM_ENTITY))</b>
+<b class="nc">&nbsp;        _columnsCharacterEntity.put(&quot;species&quot;, TableInfo.Column(&quot;species&quot;, &quot;TEXT&quot;, true, 0, null,</b>
+<b class="nc">&nbsp;            TableInfo.CREATED_FROM_ENTITY))</b>
+<b class="nc">&nbsp;        _columnsCharacterEntity.put(&quot;type&quot;, TableInfo.Column(&quot;type&quot;, &quot;TEXT&quot;, true, 0, null,</b>
+<b class="nc">&nbsp;            TableInfo.CREATED_FROM_ENTITY))</b>
+<b class="nc">&nbsp;        _columnsCharacterEntity.put(&quot;image&quot;, TableInfo.Column(&quot;image&quot;, &quot;TEXT&quot;, true, 0, null,</b>
+<b class="nc">&nbsp;            TableInfo.CREATED_FROM_ENTITY))</b>
+<b class="nc">&nbsp;        _columnsCharacterEntity.put(&quot;url&quot;, TableInfo.Column(&quot;url&quot;, &quot;TEXT&quot;, true, 0, null,</b>
+<b class="nc">&nbsp;            TableInfo.CREATED_FROM_ENTITY))</b>
+<b class="nc">&nbsp;        _columnsCharacterEntity.put(&quot;created&quot;, TableInfo.Column(&quot;created&quot;, &quot;TEXT&quot;, true, 0, null,</b>
+<b class="nc">&nbsp;            TableInfo.CREATED_FROM_ENTITY))</b>
+<b class="nc">&nbsp;        _columnsCharacterEntity.put(&quot;originLocationName&quot;, TableInfo.Column(&quot;originLocationName&quot;,</b>
+<b class="nc">&nbsp;            &quot;TEXT&quot;, true, 0, null, TableInfo.CREATED_FROM_ENTITY))</b>
+<b class="nc">&nbsp;        _columnsCharacterEntity.put(&quot;currentLocationName&quot;, TableInfo.Column(&quot;currentLocationName&quot;,</b>
+<b class="nc">&nbsp;            &quot;TEXT&quot;, true, 0, null, TableInfo.CREATED_FROM_ENTITY))</b>
+<b class="nc">&nbsp;        val _foreignKeysCharacterEntity: MutableSet&lt;TableInfo.ForeignKey&gt; = mutableSetOf()</b>
+<b class="nc">&nbsp;        val _indicesCharacterEntity: MutableSet&lt;TableInfo.Index&gt; = mutableSetOf()</b>
+<b class="nc">&nbsp;        val _infoCharacterEntity: TableInfo = TableInfo(&quot;CharacterEntity&quot;, _columnsCharacterEntity,</b>
+<b class="nc">&nbsp;            _foreignKeysCharacterEntity, _indicesCharacterEntity)</b>
+<b class="nc">&nbsp;        val _existingCharacterEntity: TableInfo = read(connection, &quot;CharacterEntity&quot;)</b>
+<b class="nc">&nbsp;        if (!_infoCharacterEntity.equals(_existingCharacterEntity)) {</b>
+<b class="nc">&nbsp;          return RoomOpenDelegate.ValidationResult(false, &quot;&quot;&quot;</b>
+&nbsp;              |CharacterEntity(com.flopez.core.database.entity.CharacterEntity).
+&nbsp;              | Expected:
+<b class="nc">&nbsp;              |&quot;&quot;&quot;.trimMargin() + _infoCharacterEntity + &quot;&quot;&quot;</b>
+&nbsp;              |
+&nbsp;              | Found:
+<b class="nc">&nbsp;              |&quot;&quot;&quot;.trimMargin() + _existingCharacterEntity)</b>
+&nbsp;        }
+<b class="nc">&nbsp;        return RoomOpenDelegate.ValidationResult(true, null)</b>
+&nbsp;      }
+&nbsp;    }
+<b class="nc">&nbsp;    return _openDelegate</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  protected override fun createInvalidationTracker(): InvalidationTracker {
+<b class="nc">&nbsp;    val _shadowTablesMap: MutableMap&lt;String, String&gt; = mutableMapOf()</b>
+<b class="nc">&nbsp;    val _viewTables: MutableMap&lt;String, Set&lt;String&gt;&gt; = mutableMapOf()</b>
+<b class="nc">&nbsp;    return InvalidationTracker(this, _shadowTablesMap, _viewTables, &quot;LocationEntity&quot;,</b>
+<b class="nc">&nbsp;        &quot;CharacterEntity&quot;)</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  public override fun clearAllTables() {
+<b class="nc">&nbsp;    super.performClear(false, &quot;LocationEntity&quot;, &quot;CharacterEntity&quot;)</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  protected override fun getRequiredTypeConverterClasses(): Map&lt;KClass&lt;*&gt;, List&lt;KClass&lt;*&gt;&gt;&gt; {
+<b class="nc">&nbsp;    val _typeConvertersMap: MutableMap&lt;KClass&lt;*&gt;, List&lt;KClass&lt;*&gt;&gt;&gt; = mutableMapOf()</b>
+<b class="nc">&nbsp;    _typeConvertersMap.put(CharactersDAO::class, CharactersDAO_Impl.getRequiredConverters())</b>
+<b class="nc">&nbsp;    _typeConvertersMap.put(LocationDAO::class, LocationDAO_Impl.getRequiredConverters())</b>
+<b class="nc">&nbsp;    return _typeConvertersMap</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  public override fun getRequiredAutoMigrationSpecClasses(): Set&lt;KClass&lt;out AutoMigrationSpec&gt;&gt; {
+<b class="nc">&nbsp;    val _autoMigrationSpecsSet: MutableSet&lt;KClass&lt;out AutoMigrationSpec&gt;&gt; = mutableSetOf()</b>
+<b class="nc">&nbsp;    return _autoMigrationSpecsSet</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  public override
+&nbsp;      fun createAutoMigrations(autoMigrationSpecs: Map&lt;KClass&lt;out AutoMigrationSpec&gt;, AutoMigrationSpec&gt;):
+&nbsp;      List&lt;Migration&gt; {
+<b class="nc">&nbsp;    val _autoMigrations: MutableList&lt;Migration&gt; = mutableListOf()</b>
+<b class="nc">&nbsp;    return _autoMigrations</b>
+&nbsp;  }
+&nbsp;
+<b class="nc">&nbsp;  public override fun charactersDAO(): CharactersDAO = _charactersDAO.value</b>
+&nbsp;
+<b class="nc">&nbsp;  public override fun locationDAO(): LocationDAO = _locationDAO.value</b>
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-04-30 10:34</div>
+</div>
+</body>
+</html>

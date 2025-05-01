@@ -1,0 +1,170 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > MortyException</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.flopez.core.domain.exception</a>
+</div>
+
+<h1>Coverage Summary for Class: MortyException (com.flopez.core.domain.exception)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">MortyException</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">MortyException$Subclass2</td>
+  </tr>
+  <tr>
+    <td class="name">MortyException$Subclass2$auxiliary$14GZiise</td>
+  </tr>
+  <tr>
+    <td class="name">MortyException$Subclass2$auxiliary$5DvXMSza</td>
+  </tr>
+  <tr>
+    <td class="name">MortyException$Subclass2$auxiliary$7TezWa1A</td>
+  </tr>
+  <tr>
+    <td class="name">MortyException$Subclass2$auxiliary$8XLYn413</td>
+  </tr>
+  <tr>
+    <td class="name">MortyException$Subclass2$auxiliary$a12ItDzE</td>
+  </tr>
+  <tr>
+    <td class="name">MortyException$Subclass2$auxiliary$bUUuL3cs</td>
+  </tr>
+  <tr>
+    <td class="name">MortyException$Subclass2$auxiliary$gKGjVO3R</td>
+  </tr>
+  <tr>
+    <td class="name">MortyException$Subclass2$auxiliary$k3lKln7x</td>
+  </tr>
+  <tr>
+    <td class="name">MortyException$Subclass2$auxiliary$KDMxUeum</td>
+  </tr>
+  <tr>
+    <td class="name">MortyException$Subclass2$auxiliary$mv6WTvei</td>
+  </tr>
+  <tr>
+    <td class="name">MortyException$Subclass2$auxiliary$tyyo5VJD</td>
+  </tr>
+  <tr>
+    <td class="name">MortyException$Subclass2$auxiliary$udiLpLYn</td>
+  </tr>
+  <tr>
+    <td class="name">MortyException$Subclass2$auxiliary$y20tjvgL</td>
+  </tr>
+  <tr>
+    <td class="name">MortyException$Subclass2$auxiliary$Z7JE2jEV</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.flopez.core.domain.exception
+&nbsp;
+&nbsp;
+<b class="fc">&nbsp;abstract class MortyException(msg: String) : Exception(msg)</b>
+&nbsp;
+&nbsp;/**Si hace falta más control sobre el tipo de error se pueden crear más subtipos de excepciones.
+&nbsp; * Por ejemplo se podria tener una NegativePageException, que fuera subtipo de QueryCharactersListException.
+&nbsp; * o un CharactersDoesNotExistException, subtipo de QuerySingleCharacterException.
+&nbsp; **/
+&nbsp;sealed class CharacterQueryException(msg: String): MortyException(msg){
+&nbsp;    data object QueryCharactersListException : CharacterQueryException(&quot;Could not query parameters from repository&quot;)
+&nbsp;    data class QuerySingleCharacterException(val characterID: Long): CharacterQueryException(&quot;Could not query character for id=$characterID&quot;)
+&nbsp;    data object InvalidCharacterId : CharacterQueryException(&quot;Could not load character id from savedStateHandle&quot;)
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-04-30 10:34</div>
+</div>
+</body>
+</html>

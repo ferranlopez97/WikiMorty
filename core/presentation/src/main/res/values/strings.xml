@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="status_dead">dead</string>
+    <string name="status_alive">alive</string>
+    <string name="status_unknown">unknown</string>
+
+    <string name="gender_male">male</string>
+    <string name="gender_female">female</string>
+    <string name="gender_genderless">genderles</string>
+    <string name="gender_unknown">unknown</string>
+    <string name="added_to_favs">Added to favorites</string>
+    <string name="no_results">Sin resultados</string>
+    <string name="go_back">back\n</string>
+    <string name="something_went_wrong">something went wrong!</string>
+    <string name="error_while_querying_characters">Error loading characters</string>
+    <string name="error_loading_character">Error while loading character</string>
+    <string name="close_search">Close search</string>
+    <string name="search">Search</string>
+    <string name="add_to_favorites">Add to favorites</string>
+    <string name="share">share</string>
+    <string name="status">status</string>
+    <string name="gender">gender</string>
+    <string name="species">species</string>
+    <string name="type">type</string>
+    <string name="origin">origin</string>
+    <string name="current_location">current location</string>
+    <string name="first_appearence">first appearence</string>
+    <string name="search_placeholder">Search...</string>
+    <string name="image_placeholder" >image not loaded</string>
+    <string name="wiki_morty">Wiki Morty</string>
+</resources>

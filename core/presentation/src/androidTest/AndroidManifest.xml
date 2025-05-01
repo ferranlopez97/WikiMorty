@@ -1,0 +1,19 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.flopez.core.presentation.test">
+
+    <application
+        android:name="dagger.hilt.android.testing.HiltTestApplication"
+        android:label="Test App">
+
+        <activity
+            android:name="com.flopez.core.presentation.util.TestActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+    </application>
+</manifest>

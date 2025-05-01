@@ -1,0 +1,34 @@
+pluginManagement {
+    repositories {
+        google {
+            content {
+                includeGroupByRegex("com\\.android.*")
+                includeGroupByRegex("com\\.google.*")
+                includeGroupByRegex("androidx.*")
+            }
+        }
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+rootProject.name = "WikiMorty"
+include(":app")
+include(":core")
+include(":core:data")
+include(":core:presentation")
+include(":core:domain")
+include(":core:network")
+include(":di")
+include(":common")
+include(":common:di")
+include(":core:database")
+include(":common:util")
+include(":common:test")

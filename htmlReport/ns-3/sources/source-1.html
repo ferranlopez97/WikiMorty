@@ -1,0 +1,247 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > CharactersRepositoryImpl</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.flopez.core.data.repository</a>
+</div>
+
+<h1>Coverage Summary for Class: CharactersRepositoryImpl (com.flopez.core.data.repository)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">CharactersRepositoryImpl</td>
+<td class="coverageStat">
+  <span class="percent">
+    80%
+  </span>
+  <span class="absValue">
+    (4/5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    70%
+  </span>
+  <span class="absValue">
+    (7/10)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    96.9%
+  </span>
+  <span class="absValue">
+    (31/32)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">CharactersRepositoryImpl$getAllCharacters$$inlined$map$1</td>
+  </tr>
+  <tr>
+    <td class="name">CharactersRepositoryImpl$getAllCharacters$$inlined$map$1$2</td>
+  </tr>
+  <tr>
+    <td class="name">CharactersRepositoryImpl$getAllCharacters$$inlined$map$1$2$1</td>
+  </tr>
+  <tr>
+    <td class="name">CharactersRepositoryImpl$loadNextPage$1</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    80%
+  </span>
+  <span class="absValue">
+    (4/5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    70%
+  </span>
+  <span class="absValue">
+    (7/10)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    96.9%
+  </span>
+  <span class="absValue">
+    (31/32)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.flopez.core.data.repository
+&nbsp;
+&nbsp;import android.util.Log
+&nbsp;import com.flopez.core.data.mapper.toDomain
+&nbsp;import com.flopez.core.data.mapper.toEntity
+&nbsp;import com.flopez.core.database.datasource.character.CharactersLocalDataSource
+&nbsp;import com.flopez.core.database.datasource.location.LocationsLocalDataSource
+&nbsp;import com.flopez.core.domain.model.Character
+&nbsp;import com.flopez.core.domain.model.QueryFilter
+&nbsp;import com.flopez.core.domain.pagination.PageResult
+&nbsp;import com.flopez.core.domain.pagination.PagedDataState
+&nbsp;import com.flopez.core.domain.repository.CharactersRepository
+&nbsp;import com.flopez.core.network.datasource.CharactersRemoteDataSource
+&nbsp;import kotlinx.coroutines.flow.Flow
+&nbsp;import kotlinx.coroutines.flow.map
+&nbsp;import javax.inject.Inject
+&nbsp;
+&nbsp;
+<b class="fc">&nbsp;class CharactersRepositoryImpl @Inject constructor(</b>
+<b class="fc">&nbsp;    private val charactersRemoteDataSource: CharactersRemoteDataSource,</b>
+<b class="fc">&nbsp;    private val charactersLocalDataSource: CharactersLocalDataSource,</b>
+<b class="fc">&nbsp;    private val locationLocalDataSource: LocationsLocalDataSource,</b>
+&nbsp;) : CharactersRepository {
+&nbsp;
+<b class="fc">&nbsp;    private val TAG = CharactersRepositoryImpl::class.simpleName</b>
+&nbsp;
+<b class="fc">&nbsp;    val PAGE_SIZE = 20</b>
+<b class="fc">&nbsp;    private var pagedState: PagedDataState = PagedDataState.empty(PAGE_SIZE)</b>
+&nbsp;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Carga la siguiente pagina de personajes
+&nbsp;     * @param filter Filtros que se aplicaran a la query remota.
+&nbsp;     * @return [PageResult.END_REACHED] si se llega al final de la paginación o
+&nbsp;     * [PageResult.ITEMS_AVAILABLE] si hay siguiente pagina y se descarga correctamente
+&nbsp;     */
+&nbsp;    override suspend fun loadNextPage(filter: QueryFilter?) : PageResult {
+&nbsp;
+&nbsp;        //Si no hay más paginas return NO_MORE_ITEMS_AVAILABLE
+<b class="fc">&nbsp;        if (!pagedState.hasNextPage) {</b>
+<b class="fc">&nbsp;            Log.d(TAG, &quot;loadMorePages: No more pages to load&quot;)</b>
+<b class="fc">&nbsp;            return PageResult.END_REACHED</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        //Como el tamaño de la pagina es fijo, podemos calcular la siguiente pagina en base al número
+&nbsp;        //de persojas ya guardados en BBDD. Comentar mejora
+&nbsp;
+<b class="fc">&nbsp;        val totalCharacters = charactersLocalDataSource.countCharacters()</b>
+<b class="fc">&nbsp;        pagedState.currentPage = (totalCharacters / pagedState.pageSize) + 1</b>
+&nbsp;
+&nbsp;        //Filtro no implementado &quot;&quot; por defecto
+<b class="fc">&nbsp;        val response = charactersRemoteDataSource.fetchCharacters(pagedState.currentPage, &quot;&quot;)</b>
+&nbsp;
+<b class="fc">&nbsp;        Log.d(TAG, &quot;loadMorePages: response = ${response.characterQueryInfoDTO}&quot;)</b>
+&nbsp;
+&nbsp;
+&nbsp;        //Si la pagina actual es inferior al numero total de paginas, hay siguiente página
+&nbsp;
+<b class="fc">&nbsp;        pagedState.hasNextPage = pagedState.currentPage.toLong() &lt; response.characterQueryInfoDTO.pages</b>
+&nbsp;
+<b class="fc">&nbsp;        Log.d(TAG, &quot;loadMorePages: currentPage=${pagedState.currentPage}&quot;)</b>
+&nbsp;
+&nbsp;        //Guardar locations primero y luego personaje
+&nbsp;
+<b class="fc">&nbsp;        if (response.characters.isEmpty()) {</b>
+<b class="fc">&nbsp;            return PageResult.NO_ITEMS_AVAILABLE</b>
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        response.characters.forEach {</b>
+<b class="fc">&nbsp;            locationLocalDataSource.insert(it.location.toEntity())</b>
+<b class="fc">&nbsp;            locationLocalDataSource.insert(it.origin.toEntity())</b>
+<b class="fc">&nbsp;        }</b>
+&nbsp;
+<b class="fc">&nbsp;        charactersLocalDataSource.insertAll(characters =  response.characters.map { it.toEntity() })</b>
+&nbsp;
+<b class="fc">&nbsp;        return PageResult.ITEMS_AVAILABLE</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Devuelve flow con todos los personajes guardados en cache local
+&nbsp;     * Añadir más filtros si fuera necesario
+&nbsp;     */
+&nbsp;    override fun getAllCharacters(filter: QueryFilter?): Flow&lt;List&lt;Character&gt;&gt; {
+&nbsp;
+<b class="fc">&nbsp;        val flow = when (filter) {</b>
+<b class="pc">&nbsp;            is QueryFilter.ByName -&gt; charactersLocalDataSource.getCharactersByName(filter.name)</b>
+<b class="fc">&nbsp;            else -&gt; charactersLocalDataSource.getAllCharacters()</b>
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        return flow.map { characters -&gt;</b>
+<b class="fc">&nbsp;            characters.map { characterEntity -&gt;</b>
+<b class="fc">&nbsp;                characterEntity.toDomain()</b>
+<b class="fc">&nbsp;            }</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    override fun getCharacterById(id: Long): Character? {
+<b class="nc">&nbsp;        return charactersLocalDataSource.getById(id)?.toDomain()</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-04-30 10:34</div>
+</div>
+</body>
+</html>
