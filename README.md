@@ -3,7 +3,7 @@
 
 Aplicación lista-detalle de los personajes de Rick y Morty usando la api de https://rickandmortyapi.com/
 
-He dejado algún fragmento de código comentado para comentarlo más adelante si se da el caso.
+*He dejado algún fragmento de código comentado para comentarlo más adelante si se da el caso.
 
 
 
@@ -25,6 +25,7 @@ He dejado algún fragmento de código comentado para comentarlo más adelante si
 
 
 ## Estructura 
+![estructura (1)](https://github.com/user-attachments/assets/1ac50b09-3c72-41bc-ae27-689fd5fc897d)
 
 ## Posibles mejoras
 
