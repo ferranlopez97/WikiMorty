@@ -3,8 +3,8 @@
 
 Aplicación lista-detalle con MVI de los personajes de Rick y Morty usando la api de https://rickandmortyapi.com/
 
-*He dejado algún fragmento de código comentado para comentarlo más adelante si se da el caso.
-*Hay un apk de la app en la raíz del proyecto.
+- He dejado algún fragmento de código comentado para comentarlo más adelante si se da el caso.
+- Hay un apk de la app en la raíz del proyecto.
 
 
 
