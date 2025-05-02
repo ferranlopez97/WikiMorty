@@ -29,10 +29,11 @@ class CharactersRepositoryImpl @Inject constructor(
 
 
     /**
-     * Carga la siguiente pagina de personajes
+     * Carga la siguiente pagina de personajes desde api remota y los guarda en cache local
      * @param filter Filtros que se aplicaran a la query remota.
-     * @return [PageResult.END_REACHED] si se llega al final de la paginación o
-     * [PageResult.ITEMS_AVAILABLE] si hay siguiente pagina y se descarga correctamente
+     * @return [PageResult.END_REACHED] si se llega al final de la paginación,
+     * [PageResult.ITEMS_AVAILABLE] si hay siguiente pagina y se descarga correctamente o
+     * [PageResult.NO_ITEMS_AVAILABLE] si la respuesta no tiene personajes
      */
     override suspend fun loadNextPage(filter: QueryFilter?) : PageResult {
 
