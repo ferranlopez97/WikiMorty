@@ -52,4 +52,6 @@ jobs:
           target: ${{ matrix.target }}
           arch: x86_64
           profile: pixel_7_pro
-          script: ./gradlew connectedCheck
+          script: |
+            ./gradlew core:presentation:connectedCheck
+            ./gradlew core:data:connectedCheck
