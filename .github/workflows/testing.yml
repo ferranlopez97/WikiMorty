@@ -22,9 +22,16 @@ jobs:
         run: ./gradlew testReleaseUnitTest
 
       - name: Instrumentation Test
-        run: |
-          ./gradlew core:presentation:connectedAndroidTest
-          ./gradlew core:data:connectedAndroidTest
+        uses: ReactiveCircus/android-emulator-runner@v2
+        with:
+          api-level: 35
+          target: google_apis
+          arch: x86_64
+          emulator-options: -no-window -no-audio -no-boot-anim
+          script: |
+              adb wait-for-device
+              ./gradlew core:presentation:connectedAndroidTest
+              ./gradlew core:data:connectedAndroidTest
 
       - name: Android Test Report
         uses: asadmansr/android-test-report-action@v1.2.0
