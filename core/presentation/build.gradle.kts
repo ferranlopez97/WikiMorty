@@ -70,6 +70,7 @@ dependencies {
 
     //Test
     testImplementation(project(":common:test"))
+    testImplementation(platform(libs.androidx.compose.bom))
     implementation(libs.coil.compose)
     implementation(libs.coil.network.okhttp)
     testImplementation(libs.junit.api)
@@ -80,6 +81,7 @@ dependencies {
     testImplementation(libs.turbine)
 
     //AndroidTest
+    androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.ui.test.junit4)
     androidTestImplementation(libs.androidx.ui.test.manifest)

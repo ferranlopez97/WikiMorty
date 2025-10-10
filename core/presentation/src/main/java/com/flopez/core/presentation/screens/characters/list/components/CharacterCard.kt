@@ -45,7 +45,7 @@ fun SharedTransitionScope.CharacterCard(
             CharacterImage(
                 modifier = Modifier
                     .sharedElement(
-                        state = rememberSharedContentState(key = character.buildSharedTransitionKey()),
+                        sharedContentState = rememberSharedContentState(key = character.buildSharedTransitionKey()),
                         animatedVisibilityScope = animatedVisibilityScope,
                     )
                     .size(sizeProvider.characterListImageSize),
