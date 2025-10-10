@@ -6,7 +6,6 @@ orbs:
 
 jobs:
   unit-test:
-    name: Unit tests
     executor:
       name: android/android_docker
       tag: 2025.03.1
@@ -28,7 +27,6 @@ jobs:
           path: ~/test-results/junit
 
   android-test:
-    name: Instrumented tests
     parameters:
       system-image:
         type: string
