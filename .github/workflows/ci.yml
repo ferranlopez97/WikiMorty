@@ -1,5 +1,5 @@
 name: Android CI
-
+run-name: Build app
 on:
     push:
         branches: ["main"]
