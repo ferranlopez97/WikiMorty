@@ -38,7 +38,9 @@ jobs:
     steps:
       - checkout
       - android/start_emulator_and_run_tests:
-          test_command: ./gradlew :app:connectedDebugAndroidTest
+          test_command: |
+            ./gradlew :presentation:connectedAndroidTest
+            ./gradlew :data:connectedAndroidTest
           system_image: << parameters.system-image >>
       - run:
           name: Save test results
