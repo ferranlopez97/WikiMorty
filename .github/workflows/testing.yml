@@ -1,65 +1,61 @@
 name: Android Instrumented Tests
 run-name: Instrumented Tests
 on:
-  push:
-    branches: [ main, develop ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ main, develop ]
 
 jobs:
   test:
-    name: API ${{ matrix.api-level }}
     runs-on: ubuntu-latest
-
     strategy:
-      fail-fast: false
       matrix:
-        api-level: [ Baklava ]
-
+        api-level: [30, 33, 35-ext15]
     steps:
-      - name: Checkout
+      - name: checkout
         uses: actions/checkout@v4
 
-      - name: Setup Java
-        uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: "21"
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
 
-      - name: Setup Gradle
+      - name: Gradle cache
         uses: gradle/actions/setup-gradle@v3
 
-      # Descarga dependencias y genera APKs de test
-      - name: Assemble app and test APKs
-        run: |
-          ./gradlew --no-daemon --stacktrace \
-            :core:presentation:assembleDebug :core:presentation:assembleAndroidTest \
-            :core:data:assembleDebug :core:data:assembleAndroidTest
+      - name: Unit test
+        run: ./gradlew testReleaseUnitTest
 
-      - name: Run instrumentation tests
+      #      - name: AVD cache
+      #        uses: actions/cache@v4
+      #        id: avd-cache
+      #        with:
+      #          path: |
+      #            ~/.android/avd/*
+      #            ~/.android/adb*
+      #          key: avd-${{ matrix.api-level }}
+
+      #      - name: create AVD and generate snapshot for caching
+      #        if: steps.avd-cache.outputs.cache-hit != 'true'
+      #        uses: reactivecircus/android-emulator-runner@v2
+      #        with:
+      #          api-level: ${{ matrix.api-level }}
+      #          target: ${{ matrix.api-level >= 30 && 'google_apis' || 'default' }}
+      #          arch: x86_64
+      #          force-avd-creation: true
+      #          emulator-options: -no-snapshot -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+      #          disable-animations: false
+      #          script: echo "Generated AVD snapshot for caching."
+
+      - name: run instrumented tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: ${{ matrix.api-level }}
-          target: google_apis
+          target: default
           arch: x86_64
-          profile: pixel_6
-          ram-size: 4096M
           force-avd-creation: true
-          emulator-options: -no-snapshot -no-window -no-boot-anim -gpu swiftshader_indirect
+          emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
           disable-animations: true
           script: |
-            adb logcat -c
-            ./gradlew --no-daemon --stacktrace \
-              :core:presentation:connectedCheck \
-              :core:data:connectedCheck
-
-      - name: Upload test reports
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: androidTest-reports-api-${{ matrix.api-level }}
-          path: |
-            core/presentation/build/reports/androidTests/connected/**
-            core/presentation/build/outputs/androidTest-results/**/*
-            core/data/build/reports/androidTests/connected/**
-            core/data/build/outputs/androidTest-results/**/*
+            ./gradlew core:presentation:connectedCheck
+            ./gradlew core:data:connectedCheck
