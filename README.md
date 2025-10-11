@@ -21,6 +21,7 @@ Aplicación lista-detalle con MVI de los personajes de Rick y Morty usando la ap
 - MockK
 - AssertK
 - Turbi
+- This is a test
 
 
 
