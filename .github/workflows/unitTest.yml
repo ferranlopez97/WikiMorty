@@ -5,7 +5,7 @@ on:
     branches: [ main, develop ]
 
 jobs:
-  test:
+  unit-test:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
