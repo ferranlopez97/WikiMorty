@@ -20,8 +20,7 @@ Aplicación lista-detalle con MVI de los personajes de Rick y Morty usando la ap
 - Junit 4 y 5
 - MockK
 - AssertK
-- Turbine
-- Hola
+- Turbi
 
 
 
