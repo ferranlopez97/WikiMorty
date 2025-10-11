@@ -3,6 +3,8 @@ run-name: Instrumented Tests
 on:
   push:
     branches: [ main, develop ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
   test:
@@ -12,7 +14,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        api-level: [ 30, 33, 35 ]
+        api-level: [ Baklava ]
 
     steps:
       - name: Checkout
@@ -22,7 +24,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: "17"
+          java-version: "21"
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
@@ -42,14 +44,14 @@ jobs:
           arch: x86_64
           profile: pixel_6
           ram-size: 4096M
-          emulator-options: >-
-            -no-snapshot -no-window -no-boot-anim -gpu swiftshader_indirect
+          force-avd-creation: true
+          emulator-options: -no-snapshot -no-window -no-boot-anim -gpu swiftshader_indirect
           disable-animations: true
           script: |
             adb logcat -c
             ./gradlew --no-daemon --stacktrace \
-              :core:presentation:connectedDebugAndroidTest \
-              :core:data:connectedDebugAndroidTest
+              :core:presentation:connectedCheck \
+              :core:data:connectedCheck
 
       - name: Upload test reports
         if: always()
