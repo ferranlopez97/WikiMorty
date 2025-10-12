@@ -1,17 +1,113 @@
+# ======================================
+# Android Studio & IntelliJ
+# ======================================
+.idea/
 *.iml
-.gradle
-/local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
-.DS_Store
-/build
-/captures
-.externalNativeBuild
-.cxx
+*.ipr
+*.iws
+out/
+
+# Gradle
+.gradle/
+build/
+**/build/
+!gradle/wrapper/gradle-wrapper.jar
+!gradle/wrapper/gradle-wrapper.properties
 local.properties
-/.kotlin/errors/
-.idea
+
+# ======================================
+# Android specific
+# ======================================
+# Generated files
+captures/
+outputs/
+release/
+generated/
+navigation.json
+google-services.json
+
+# ======================================
+# Kotlin / Java
+# ======================================
+*.class
+*.log
+*.jar
+*.war
+*.ear
+
+# ======================================
+# OS specific files
+# ======================================
+.DS_Store
+Thumbs.db
+
+# ======================================
+# Android Studio cache files
+# ======================================
+.cxx/
+.externalNativeBuild/
+.gradle/
+captures/
+.idea/caches/
+.idea/libraries/
+.idea/modules.xml
+.idea/workspace.xml
+.idea/navEditor.xml
+.idea/assetWizardSettings.xml
+
+# ======================================
+# Miscellaneous
+# ======================================
+# Avoid committing keystore files
+*.jks
+*.keystore
+
+# Ignore signing configs
+signing.properties
+
+# Jetpack Compose previews
+composePreview.cache
+
+# ======================================
+# Test / Reports
+# ======================================
+test-results/
+reports/
+lint/
+lint-results.xml
+lint-results.html
+
+# ======================================
+# Android NDK / C++
+# ======================================
+obj/
+*.so
+
+# ======================================
+# Firebase / Google Services
+# ======================================
+# If you store firebase configs separately
+# Uncomment the next line if you commit configs manually
+# google-services.json
+
+# ======================================
+# Android Studio navigation editor temp files
+# ======================================
+.navigation/
+
+# ======================================
+# Android generated local debug files
+# ======================================
+*.hprof
+*.orig
+*.bak
+*.tmp
+*.swp
+*.swo
+*.local
+*.orig.*
+
+# ======================================
+# Android crash logs
+# ======================================
+*.trace
