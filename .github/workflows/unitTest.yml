@@ -11,5 +11,11 @@ jobs:
       - name: checkout
         uses: actions/checkout@v4
 
+
+      - name: Restore google-services.json
+        run: |
+          mkdir -p app
+          echo "${{ secrets.FIREBASE_GOOGLE_SERVICES_JSON }}" | base64 -d > app/google-services.json
+
       - name: run tests
-        run: ./gradlew testDebugUnitTest
+        run: ./gradlew testReleaseUnitTest
