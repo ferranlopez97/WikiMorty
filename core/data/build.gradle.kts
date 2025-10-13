@@ -55,6 +55,10 @@ dependencies {
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)
 
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.config)
+    implementation(libs.firebase.analytics)
+
     //Test
     testImplementation(libs.junit.api)
     testRuntimeOnly(libs.junit.engine)
