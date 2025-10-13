@@ -12,4 +12,4 @@ jobs:
         uses: actions/checkout@v4
 
       - name: run tests
-        run: ./gradlew testReleaseUnitTest
+        run: ./gradlew testDebugUnitTest
